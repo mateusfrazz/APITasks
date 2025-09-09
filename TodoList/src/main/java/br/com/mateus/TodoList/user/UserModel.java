@@ -2,8 +2,9 @@ package br.com.mateus.TodoList.user;
 
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity(name = "tb_users")
 public class UserModel {
     @Id // definindo a chave primaria
-    @Generated(value = "UUID") // definindo que o id sera gerado automaticamente
+    @GeneratedValue(strategy = GenerationType.UUID) // definindo que o id sera gerado automaticamente
     private UUID id;
 
     private String name;

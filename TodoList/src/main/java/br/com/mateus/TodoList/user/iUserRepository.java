@@ -1,5 +1,8 @@
 package br.com.mateus.TodoList.user;
 
-public interface iUserRepository {
+import java.util.UUID;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface iUserRepository extends JpaRepository<UserModel, UUID> {
 
 }
