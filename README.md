@@ -26,3 +26,19 @@ API REST desenvolvida em **Java + Spring Boot** para gerenciamento de tarefas, c
 1. Clone o repositório:
    ```bash
    git clone https://github.com/seu-usuario/todolist-api.git
+
+**📂 Estrutura principal
+
+UserModel → Representa o usuário (com senha criptografada).
+
+TaskModel → Representa a tarefa.
+
+FilterTaskAuth → Filtro que valida o token JWT em cada requisição.**
+
+📌 Próximos passos
+
+Implementar documentação com Swagger/OpenAPI
+
+Suporte a bancos de dados relacionais (PostgreSQL)
+
+Deploy em nuvem (Heroku/AWS)
