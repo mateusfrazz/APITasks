@@ -16,7 +16,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 public class UserController {
 
     @Autowired
-    private IUserRepository userRepository;
+    private iUserRepository userRepository;
 
     // Endpoint para criar um novo usuário
     @PostMapping("/register")
