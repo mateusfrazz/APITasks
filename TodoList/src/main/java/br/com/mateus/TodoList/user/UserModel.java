@@ -23,6 +23,7 @@ public class UserModel {
     @Column(unique = true) // definindo que o username sera unico no banco de dados
     private String username;
     private String password;
+    private String email;
 
     // definindo que a data de criacao sera gerada automaticamente
     @CreationTimestamp

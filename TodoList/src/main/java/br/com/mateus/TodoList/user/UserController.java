@@ -36,4 +36,14 @@ public class UserController {
         var userCreated = this.userRepository.save(userModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);
     }
+
+    // === MÉTODO DE LOGIN ===
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody UserModel userModel) {
+        
+        //procurando usuario pelo username ou email que veio na requisição
+        var userEmail = this.userRepository.find
+ 
+    }
+
 }
