@@ -2,6 +2,7 @@ package br.com.mateus.TodoList.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,10 +41,21 @@ public class UserController {
     // === MÉTODO DE LOGIN ===
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserModel userModel) {
-        
-        //procurando usuario pelo username ou email que veio na requisição
-        var userEmail = this.userRepository.find
- 
-    }
 
+        // procurando usuario pelo username ou email que veio na requisição
+        var user = this.userRepository.findByUsernameOrEmail(userModel.getUsername(), userModel.getUsername());
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario ou senha invalidas");
+        }
+
+        var passwordVerify = BCrypt.verifyer().verify(userModel.getPassword().toCharArray(), user.getPassword());
+
+        if (passwordVerify.verified) {
+            // Sucesso! o usuario pode efetuar login
+            return ResponseEntity.status(HttpStatus.OK).body("Login realizado com sucesso");
+        }
+
+        // se a senha não bateu, então ta errada
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario ou senha invalidos");
+    }
 }
